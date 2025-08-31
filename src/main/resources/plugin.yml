@@ -1,0 +1,8 @@
+name: SMPTweaks
+version: '1.0-SNAPSHOT'
+main: net.prismarray.smptweaks.SMPTweaks
+api-version: '1.21'
+prefix: SMPT
+authors: [ Prismary ]
+description: Lightweight, all-in-one plugin for Minecraft with friends
+website: https://prismarray.net/
