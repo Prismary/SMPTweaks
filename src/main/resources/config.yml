@@ -1,0 +1,37 @@
+# # # # # # # # # # # # # # #
+# SMP TWEAKS  CONFIGURATION #
+# # # # # # # # # # # # # # #
+
+
+# Contents of the server browser MOTD
+motd:
+  enable: true
+  line1: "§c[?.?.?] §6Survival Multiplayer"
+  line2: "§8>> §7This is a MOTD!"
+  appendix: ""
+
+# Header and footer of the TAB list
+tab:
+  enable: true
+  header: "- Survival Multiplayer -"
+  footer: "Have fun!"
+
+# Discord command
+discord:
+  enable: true
+  message: "§9Join our discord!"
+  link: "§7<link>"
+
+# Custom world spawn
+spawn:
+  enable: true
+  location:
+    X: 0
+    Y: 63
+    Z: 0
+
+# Custom items
+enableCustomCrafting: true
+
+# Creeper explosions
+disableCreeperBlockDamage: true
