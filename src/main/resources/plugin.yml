@@ -5,4 +5,39 @@ api-version: '1.21'
 prefix: SMPT
 authors: [ Prismary ]
 description: Lightweight, all-in-one plugin for Minecraft with friends
-website: https://prismarray.net/
+
+commands:
+  discord:
+    description: Send player a discord link
+    permission: smpt.discord
+  motd:
+    description: Set the server MOTD appendix
+    permission: smpt.motd
+
+  vouch:
+    description: Enable a player to join the server
+    permission: smpt.vouch
+    permission-message: §cOnly trusted players can use this command.
+  suspend:
+    description: Suspend a player from the server
+    permission: smpt.suspend
+    permission-message: §cOnly moderators can use this command.
+  reinstate:
+    description: Lift the suspension of a player
+    permission: smpt.reinstate
+    permission-message: §cOnly moderators can use this command.
+  purge:
+    description: Entirely remove a registered player from the config
+    permission: smpt.purge
+    permission-message: §cOnly moderators can use this command.
+  playerinfo:
+    description: View all information about a registered user
+    permission: smpt.playerinfo
+    permission-message: §cOnly moderators can use this command.
+
+  reload:
+    description: Reload main config
+    permission: smpt.reload
+  lock:
+    description: Toggle maintenance mode
+    permission: smpt.lock

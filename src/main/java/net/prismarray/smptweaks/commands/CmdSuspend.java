@@ -17,7 +17,13 @@ public class CmdSuspend implements CommandExecutor {
         }
 
         UUID toSuspend = Bukkit.getOfflinePlayer(args[0]).getUniqueId();
-        UUID suspender = Bukkit.getPlayer(sender.getName()).getUniqueId();
+        UUID suspender;
+
+        try { // getPlayer() will return Null if run by server. Field may remain null in this case
+            suspender = Bukkit.getPlayer(sender.getName()).getUniqueId();
+        } catch (NullPointerException e) {
+            suspender = null;
+        }
 
         Player onlinePlayer = Bukkit.getPlayer(toSuspend);
 

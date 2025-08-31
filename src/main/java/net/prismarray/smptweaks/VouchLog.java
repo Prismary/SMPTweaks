@@ -16,12 +16,14 @@ public class VouchLog extends Config {
 
 
     // Specific Methods
-    public static boolean registerPlayer(UUID playerID, UUID vouchID) {
-        if (isRegistered(playerID)) {
+    public static boolean registerPlayer(String inviteeName, UUID inviteeID,  UUID inviterID) {
+        if (isRegistered(inviteeID)) {
             return false;
         }
+        getInstance().getConfig().set(inviteeID.toString() + ".name", inviteeName);
+        getInstance().getConfig().set(inviteeID.toString() + ".invitedBy", inviterID == null ? "SERVER" : inviterID.toString());
+        getInstance().getConfig().set(inviteeID.toString() + ".inviteTime", System.currentTimeMillis());
 
-        getInstance().getConfig().set(playerID.toString() + ".vouchID", vouchID.toString());
 
         getInstance().save();
         return true;
@@ -32,7 +34,8 @@ public class VouchLog extends Config {
             return false;
         }
 
-        getInstance().getConfig().set(playerID.toString() + ".suspenderID", suspenderID.toString());
+        getInstance().getConfig().set(playerID.toString() + ".suspendedBy", suspenderID == null ? "SERVER" : suspenderID.toString());
+        getInstance().getConfig().set(playerID.toString() + ".suspendTime", System.currentTimeMillis());
 
         getInstance().save();
         return true;
@@ -43,7 +46,8 @@ public class VouchLog extends Config {
             return false;
         }
 
-        getInstance().getConfig().set(playerID.toString() + ".suspenderID", null);
+        getInstance().getConfig().set(playerID.toString() + ".suspendedBy", null);
+        getInstance().getConfig().set(playerID.toString() + ".suspendTime", null);
 
         getInstance().save();
         return true;
@@ -68,7 +72,7 @@ public class VouchLog extends Config {
     }
 
     public static boolean isSuspended(UUID playerID) {
-        if (getInstance().getConfig().contains(playerID.toString() + ".suspenderID")) {
+        if (getInstance().getConfig().contains(playerID.toString() + ".suspendedBy")) {
             return true;
         }
         return false;
@@ -77,10 +81,18 @@ public class VouchLog extends Config {
     // Getters
 
     public static UUID getVouchID(UUID playerID) {
-        return UUID.fromString(getInstance().getConfig().getString(playerID.toString() + ".vouchID"));
+        return UUID.fromString(getInstance().getConfig().getString(playerID.toString() + ".invitedBy"));
+    }
+
+    public static String getInviteTime(UUID playerID) {
+        return getInstance().getConfig().getString(playerID.toString() + ".inviteTime");
     }
 
     public static UUID getSuspenderID(UUID playerID) {
-        return UUID.fromString(getInstance().getConfig().getString(playerID.toString() + ".suspenderID"));
+        return UUID.fromString(getInstance().getConfig().getString(playerID.toString() + ".suspendedBy"));
+    }
+
+    public static String getSuspendTime(UUID playerID) {
+        return getInstance().getConfig().getString(playerID.toString() + ".suspendTime");
     }
 }
