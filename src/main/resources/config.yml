@@ -30,8 +30,19 @@ spawn:
     Y: 63
     Z: 0
 
-# Custom items
-enableCustomCrafting: true
+# Crafting recipes
+crafting:
+  totemOfPreservation: true
+  elytra: true
+
+# Balancing tweaks
+balancing:
+  noMendingTrades: true
+  noElytraSpawns: true
+  noElytraRepair: true
+  noMendingElytra: true
+  lowShulkerDrops: true
+  noShulkersInEnderchest: true
 
 # Creeper explosions
 disableCreeperBlockDamage: true

@@ -2,7 +2,7 @@ package net.prismarray.smptweaks.commands;
 
 import net.prismarray.smptweaks.SMPTweaks;
 import net.prismarray.smptweaks.UsernameCheck;
-import net.prismarray.smptweaks.VouchLog;
+import net.prismarray.smptweaks.InviteLog;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 
 import java.util.UUID;
 
-public class CmdVouch implements CommandExecutor {
+public class CmdInvite implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
@@ -33,7 +33,7 @@ public class CmdVouch implements CommandExecutor {
 
                 toRegister = Bukkit.getOfflinePlayer(args[0]).getUniqueId();
 
-                if (VouchLog.isRegistered(toRegister)) { // return early if player is already registered
+                if (InviteLog.isRegistered(toRegister)) { // return early if player is already registered
                     sender.sendMessage(String.format("§4%s§c is already registered!", args[0]));
                     return;
                 }
@@ -45,10 +45,10 @@ public class CmdVouch implements CommandExecutor {
                 }
 
                 // execute registration method
-                if (VouchLog.registerPlayer(args[0], toRegister, registrar)) {
-                    sender.sendMessage(String.format("§aVouched for §2%s §ato play on the server!", args[0]));
+                if (InviteLog.registerPlayer(args[0], toRegister, registrar)) {
+                    sender.sendMessage(String.format("§aInvited §2%s §ato play on the server!", args[0]));
                 } else {
-                    sender.sendMessage(String.format("§cUnable to vouch for §4%s§c! An error occurred.", args[0]));
+                    sender.sendMessage(String.format("§cUnable to invite §4%s§c! An error occurred.", args[0]));
                 }
             });
         });

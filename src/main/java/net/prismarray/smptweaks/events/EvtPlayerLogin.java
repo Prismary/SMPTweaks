@@ -1,6 +1,6 @@
 package net.prismarray.smptweaks.events;
 
-import net.prismarray.smptweaks.VouchLog;
+import net.prismarray.smptweaks.InviteLog;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerLoginEvent;
 
@@ -12,12 +12,12 @@ public class EvtPlayerLogin extends EventBase {
     public void playerLogin(PlayerLoginEvent event) {
         UUID playerID = event.getPlayer().getUniqueId();
 
-        if (!VouchLog.isRegistered(playerID)) {
+        if (!InviteLog.isRegistered(playerID)) {
             disallow(event, "§cYou are not registered to play on this server.");
             return;
         }
 
-        if (VouchLog.isSuspended(playerID)) {
+        if (InviteLog.isSuspended(playerID)) {
             disallow(event, "§cYou have been suspended from this server!");
             return;
         }

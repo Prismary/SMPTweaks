@@ -1,6 +1,6 @@
 package net.prismarray.smptweaks.commands;
 
-import net.prismarray.smptweaks.VouchLog;
+import net.prismarray.smptweaks.InviteLog;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,7 +17,7 @@ public class CmdReinstate implements CommandExecutor {
 
         UUID toReinstate = Bukkit.getOfflinePlayer(args[0]).getUniqueId();
 
-        if (VouchLog.reinstatePlayer(toReinstate)) {
+        if (InviteLog.reinstatePlayer(toReinstate)) {
             sender.sendMessage(String.format("§2%s §ais no longer suspended.", args[0]));
         } else {
             sender.sendMessage(String.format("§cUnable to reinstate §4%s§c! Are they not registered or not suspended?", args[0]));

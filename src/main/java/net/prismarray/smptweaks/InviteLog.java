@@ -2,15 +2,15 @@ package net.prismarray.smptweaks;
 
 import java.util.UUID;
 
-public class VouchLog extends Config {
+public class InviteLog extends Config {
 
-    private static VouchLog instance = new VouchLog("vouches.yml");
+    private static InviteLog instance = new InviteLog("invites.yml");
 
-    private VouchLog(String fileName) {
+    private InviteLog(String fileName) {
         super(fileName);
     }
 
-    public static VouchLog getInstance() {
+    public static InviteLog getInstance() {
         return instance;
     }
 
@@ -65,22 +65,16 @@ public class VouchLog extends Config {
     }
 
     public static boolean isRegistered(UUID playerID) {
-        if (getInstance().getConfig().contains(playerID.toString())) {
-            return true;
-        }
-        return false;
+        return getInstance().getConfig().contains(playerID.toString());
     }
 
     public static boolean isSuspended(UUID playerID) {
-        if (getInstance().getConfig().contains(playerID.toString() + ".suspendedBy")) {
-            return true;
-        }
-        return false;
+        return getInstance().getConfig().contains(playerID.toString() + ".suspendedBy");
     }
 
     // Getters
 
-    public static UUID getVouchID(UUID playerID) {
+    public static UUID getInviteID(UUID playerID) {
         return UUID.fromString(getInstance().getConfig().getString(playerID.toString() + ".invitedBy"));
     }
 

@@ -14,9 +14,9 @@ commands:
     description: Set the server MOTD appendix
     permission: smpt.motd
 
-  vouch:
+  invite:
     description: Enable a player to join the server
-    permission: smpt.vouch
+    permission: smpt.invite
     permission-message: §cOnly trusted players can use this command.
   suspend:
     description: Suspend a player from the server

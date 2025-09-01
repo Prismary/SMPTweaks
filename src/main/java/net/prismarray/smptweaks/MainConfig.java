@@ -35,12 +35,21 @@ public class MainConfig extends Config {
         return getInstance().getConfig().getBoolean("spawn.enable");
     }
 
-    public static boolean isCraftingEnabled() {
-        return getInstance().getConfig().getBoolean("enableCustomCrafting");
+    public static boolean noMendingTrades() {
+        return getInstance().getConfig().getBoolean("balancing.noMendingTrades");
     }
 
     public static boolean isCreeperDamageDisabled() {
         return getInstance().getConfig().getBoolean("disableCreeperBlockDamage");
+    }
+
+    // Crafting
+    public static boolean isTotemCraftingEnabled() {
+        return getInstance().getConfig().getBoolean("crafting.totemOfPreservation");
+    }
+
+    public static boolean isElytraCraftingEnabled() {
+        return getInstance().getConfig().getBoolean("crafting.elytra");
     }
 
     // Other getters

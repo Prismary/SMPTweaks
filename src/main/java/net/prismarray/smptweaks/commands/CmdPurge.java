@@ -1,6 +1,6 @@
 package net.prismarray.smptweaks.commands;
 
-import net.prismarray.smptweaks.VouchLog;
+import net.prismarray.smptweaks.InviteLog;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,7 +17,7 @@ public class CmdPurge implements CommandExecutor {
 
         UUID toPurge = Bukkit.getOfflinePlayer(args[0]).getUniqueId();
 
-        if (VouchLog.purgePlayer(toPurge)) {
+        if (InviteLog.purgePlayer(toPurge)) {
             sender.sendMessage(String.format("§4%s §chas been removed from the vouch log.", args[0]));
         } else {
             sender.sendMessage(String.format("§cUnable to purge §4%s§c! Are they not registered?", args[0]));

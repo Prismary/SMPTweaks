@@ -1,6 +1,6 @@
 package net.prismarray.smptweaks.commands;
 
-import net.prismarray.smptweaks.VouchLog;
+import net.prismarray.smptweaks.InviteLog;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -27,7 +27,7 @@ public class CmdSuspend implements CommandExecutor {
 
         Player onlinePlayer = Bukkit.getPlayer(toSuspend);
 
-        if (VouchLog.suspendPlayer(toSuspend, suspender)) {
+        if (InviteLog.suspendPlayer(toSuspend, suspender)) {
             if (onlinePlayer != null) {
                 onlinePlayer.kickPlayer("§cYou have been suspended from the server!");
             }

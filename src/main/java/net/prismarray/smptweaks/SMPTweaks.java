@@ -2,6 +2,7 @@ package net.prismarray.smptweaks;
 
 import net.prismarray.smptweaks.commands.*;
 import net.prismarray.smptweaks.events.*;
+import net.prismarray.smptweaks.recipes.RcpElytra;
 import net.prismarray.smptweaks.recipes.RcpTotemOfPreservation;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -17,16 +18,13 @@ public final class SMPTweaks extends JavaPlugin {
 
         registerCommands();
         registerEvents();
-
-        if (MainConfig.isCraftingEnabled()) {
-            registerRecipes();
-        }
+        registerRecipes();
     }
 
     @Override
     public void onDisable() {
         MainConfig.getInstance().save();
-        VouchLog.getInstance().save();
+        InviteLog.getInstance().save();
     }
 
     public static SMPTweaks getInstance() {
@@ -45,6 +43,7 @@ public final class SMPTweaks extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EvtInventoryPreservation(), this);
         getServer().getPluginManager().registerEvents(new EvtPreventUnintendedCraft(), this);
         getServer().getPluginManager().registerEvents(new EvtPlayerLogin(), this);
+        getServer().getPluginManager().registerEvents(new EvtSendTab(), this);
 
         if (MainConfig.isMOTDEnabled()) {
             getServer().getPluginManager().registerEvents(new EvtCustomMOTD(), this);
@@ -57,10 +56,14 @@ public final class SMPTweaks extends JavaPlugin {
         if (MainConfig.isSpawnEnabled()) {
             getServer().getPluginManager().registerEvents(new EvtSetSpawnLocation(), this);
         }
+
+        if (MainConfig.noMendingTrades()) {
+            getServer().getPluginManager().registerEvents(new EvtMendingTrade(), this);
+        }
     }
 
     private void registerCommands() {
-        getCommand("vouch").setExecutor(new CmdVouch());
+        getCommand("invite").setExecutor(new CmdInvite());
         getCommand("suspend").setExecutor(new CmdSuspend());
         getCommand("reinstate").setExecutor(new CmdReinstate());
         getCommand("purge").setExecutor(new CmdPurge());
@@ -75,7 +78,12 @@ public final class SMPTweaks extends JavaPlugin {
     }
 
     private void registerRecipes() {
-        new RcpTotemOfPreservation(this);
+        if (MainConfig.isTotemCraftingEnabled()) {
+            new RcpTotemOfPreservation(this);
+        }
+        if (MainConfig.isElytraCraftingEnabled()) {
+            new RcpElytra(this);
+        }
     }
 }
 
