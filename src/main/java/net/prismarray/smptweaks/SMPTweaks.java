@@ -60,6 +60,10 @@ public final class SMPTweaks extends JavaPlugin {
         if (MainConfig.noMendingTrades()) {
             getServer().getPluginManager().registerEvents(new EvtMendingTrade(), this);
         }
+
+        if (MainConfig.noElytraSpawns()) {
+            getServer().getPluginManager().registerEvents(new EvtPreventElytraSpawn(), this);
+        }
     }
 
     private void registerCommands() {

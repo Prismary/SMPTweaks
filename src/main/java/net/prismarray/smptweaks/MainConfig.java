@@ -39,6 +39,10 @@ public class MainConfig extends Config {
         return getInstance().getConfig().getBoolean("balancing.noMendingTrades");
     }
 
+    public static boolean noElytraSpawns() {
+        return getInstance().getConfig().getBoolean("balancing.noElytraSpawns");
+    }
+
     public static boolean isCreeperDamageDisabled() {
         return getInstance().getConfig().getBoolean("disableCreeperBlockDamage");
     }

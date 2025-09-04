@@ -1,13 +1,10 @@
 package net.prismarray.smptweaks.events;
 
-import net.prismarray.smptweaks.SMPTweaks;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.VillagerAcquireTradeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
-
-import java.util.List;
 
 public class EvtMendingTrade extends EventBase {
 
