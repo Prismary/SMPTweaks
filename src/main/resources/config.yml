@@ -40,8 +40,7 @@ balancing:
   noMendingTrades: true
   noElytraSpawns: true
   noElytraRepair: true
-  noMendingElytra: true
-  lowShulkerDrops: true
+  noElytraEnchants: true
   noShulkersInEnderchest: true
 
 # Creeper explosions

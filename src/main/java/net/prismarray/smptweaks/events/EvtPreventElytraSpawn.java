@@ -18,6 +18,7 @@ public class EvtPreventElytraSpawn extends EventBase {
             if (entity instanceof ItemFrame frame) {
                 if (frame.getItem().getType() == Material.ELYTRA) {
                     frame.setItem(null);
+                    //SMPTweaks.getInstance().getLogger().info("Elytra removed on new chunk load!");
                 }
             }
         }

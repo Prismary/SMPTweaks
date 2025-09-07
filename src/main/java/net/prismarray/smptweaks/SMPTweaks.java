@@ -64,6 +64,18 @@ public final class SMPTweaks extends JavaPlugin {
         if (MainConfig.noElytraSpawns()) {
             getServer().getPluginManager().registerEvents(new EvtPreventElytraSpawn(), this);
         }
+
+        if (MainConfig.noShulkersInEnderchest()) {
+            getServer().getPluginManager().registerEvents(new EvtNoShulkerboxInEnderchest(), this);
+        }
+
+        if (MainConfig.noElytraEnchants()) {
+            getServer().getPluginManager().registerEvents(new EvtPreventElytraEnchants(), this);
+        }
+
+        if (MainConfig.noElytraRepair()) {
+            getServer().getPluginManager().registerEvents(new EvtPreventElytraRepair(), this);
+        }
     }
 
     private void registerCommands() {

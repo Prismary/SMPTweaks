@@ -43,6 +43,18 @@ public class MainConfig extends Config {
         return getInstance().getConfig().getBoolean("balancing.noElytraSpawns");
     }
 
+    public static boolean noShulkersInEnderchest() {
+        return getInstance().getConfig().getBoolean("balancing.noShulkersInEnderchest");
+    }
+
+    public static boolean noElytraEnchants() {
+        return getInstance().getConfig().getBoolean("balancing.noElytraEnchants");
+    }
+
+    public static boolean noElytraRepair() {
+        return getInstance().getConfig().getBoolean("balancing.noElytraRepair");
+    }
+
     public static boolean isCreeperDamageDisabled() {
         return getInstance().getConfig().getBoolean("disableCreeperBlockDamage");
     }
