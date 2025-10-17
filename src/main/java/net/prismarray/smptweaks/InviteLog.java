@@ -75,7 +75,11 @@ public class InviteLog extends Config {
     // Getters
 
     public static UUID getInviteID(UUID playerID) {
-        return UUID.fromString(getInstance().getConfig().getString(playerID.toString() + ".invitedBy"));
+        String entry = getInstance().getConfig().getString(playerID.toString() + ".invitedBy");
+        if (entry.equals("SERVER")) {
+            return null;
+        }
+        return UUID.fromString(entry);
     }
 
     public static String getInviteTime(UUID playerID) {

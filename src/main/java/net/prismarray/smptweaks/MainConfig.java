@@ -3,6 +3,8 @@ package net.prismarray.smptweaks;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
+import java.util.List;
+
 public class MainConfig extends Config {
 
     private static MainConfig instance = new MainConfig("config.yml");
@@ -19,8 +21,16 @@ public class MainConfig extends Config {
     // Specific Methods
 
     // Booleans
+    public static boolean isLocked() {
+        return getInstance().getConfig().getBoolean("locked");
+    }
+
     public static boolean isMOTDEnabled() {
         return getInstance().getConfig().getBoolean("motd.enable");
+    }
+
+    public static boolean isMOTDRandom() {
+        return getInstance().getConfig().getBoolean("motd.randomize");
     }
 
     public static boolean isTABEnabled() {
@@ -29,6 +39,10 @@ public class MainConfig extends Config {
 
     public static boolean isDiscordEnabled() {
         return getInstance().getConfig().getBoolean("discord.enable");
+    }
+
+    public static boolean useInviteCooldown() {
+        return getInstance().getConfig().getBoolean("inviteCooldown");
     }
 
     public static boolean isSpawnEnabled() {
@@ -69,12 +83,17 @@ public class MainConfig extends Config {
     }
 
     // Other getters
-    public static String[] getMOTD() {
+    public static String[] getStaticMOTD() {
         return new String[]{
                 getInstance().getConfig().getString("motd.line1"),
                 getInstance().getConfig().getString("motd.line2"),
-                getInstance().getConfig().getString("motd.appendix")
+                getInstance().getConfig().getString("motd.message"),
+                getInstance().getConfig().getString("motd.maintenance")
         };
+    }
+
+    public static List<String> getMOTDPool() {
+        return getInstance().getConfig().getStringList("motd.pool");
     }
 
     public static String[] getTAB() {
@@ -102,8 +121,13 @@ public class MainConfig extends Config {
 
     // Setters
 
-    public static void setAppendix(String appendix) {
-        getInstance().getConfig().set("motd.appendix", appendix);
+    public static void setLock(boolean newLockState) {
+        getInstance().getConfig().set("locked", newLockState);
+        getInstance().save();
+    }
+
+    public static void setStaticMessage(String appendix) {
+        getInstance().getConfig().set("motd.message", appendix);
         getInstance().save();
     }
 }

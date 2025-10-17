@@ -9,12 +9,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class SMPTweaks extends JavaPlugin {
 
     private static SMPTweaks instance;
-    private static boolean isLocked;
 
     @Override
     public void onEnable() {
         instance = this;
-        isLocked = false;
 
         registerCommands();
         registerEvents();
@@ -29,14 +27,6 @@ public final class SMPTweaks extends JavaPlugin {
 
     public static SMPTweaks getInstance() {
         return instance;
-    }
-
-    public void toggleLock() {
-        isLocked = !isLocked;
-    }
-
-    public boolean isLocked() {
-        return isLocked;
     }
 
     private void registerEvents() {
@@ -84,9 +74,11 @@ public final class SMPTweaks extends JavaPlugin {
         getCommand("reinstate").setExecutor(new CmdReinstate());
         getCommand("purge").setExecutor(new CmdPurge());
         getCommand("lock").setExecutor(new CmdLock());
+        getCommand("unlock").setExecutor(new CmdUnlock());
         getCommand("reload").setExecutor(new CmdReload());
         getCommand("motd").setExecutor(new CmdMotd());
         getCommand("playerinfo").setExecutor(new CmdPlayerInfo());
+        getCommand("trace").setExecutor(new CmdTrace());
 
         if (MainConfig.isDiscordEnabled()) {
             getCommand("discord").setExecutor(new CmdDiscord());

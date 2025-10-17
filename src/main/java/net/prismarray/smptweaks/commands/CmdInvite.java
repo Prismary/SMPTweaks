@@ -1,5 +1,6 @@
 package net.prismarray.smptweaks.commands;
 
+import net.prismarray.smptweaks.MainConfig;
 import net.prismarray.smptweaks.SMPTweaks;
 import net.prismarray.smptweaks.UsernameCheck;
 import net.prismarray.smptweaks.InviteLog;
@@ -7,6 +8,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.eclipse.sisu.launch.Main;
 
 import java.util.UUID;
 
@@ -14,7 +17,13 @@ public class CmdInvite implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
-            return false;
+            sender.sendMessage("§cPlease specify a username!");
+            return true;
+        }
+
+        if (MainConfig.useInviteCooldown() && sender instanceof Player && !isCooldownExpired(Bukkit.getPlayer(sender.getName()))) {
+            sender.sendMessage("§cYou must have been registered for at least one day before inviting new players!");
+            return true;
         }
 
         Bukkit.getScheduler().runTaskAsynchronously(SMPTweaks.getInstance(), () -> {
@@ -54,5 +63,10 @@ public class CmdInvite implements CommandExecutor {
         });
 
         return true;
+    }
+
+    public boolean isCooldownExpired(Player player) {
+        return System.currentTimeMillis() - Long.parseLong(InviteLog.getInviteTime(player.getUniqueId())) > 86400000 ||
+                player.hasPermission("smpt.cooldownbypass"); // 24h cooldown
     }
 }

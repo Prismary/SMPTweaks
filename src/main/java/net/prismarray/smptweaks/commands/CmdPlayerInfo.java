@@ -34,6 +34,7 @@ public class CmdPlayerInfo implements CommandExecutor {
             sender.sendMessage("§6>> §7Invited by §fa server admin");
         }
         sender.sendMessage("§6>> §7Invited on: §f" + TimeFormatter.toDate(InviteLog.getInviteTime(playerID)));
+        sender.sendMessage("§6>> §7Status: " + (InviteLog.isSuspended(playerID) ? "§c§lSUSPENDED" : "§a§lACTIVE"));
 
 
         if (InviteLog.isSuspended(playerID)) {

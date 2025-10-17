@@ -7,17 +7,24 @@ authors: [ Prismary ]
 description: Lightweight, all-in-one plugin for Minecraft with friends
 
 commands:
+  # User commands
   discord:
     description: Send player a discord link
     permission: smpt.discord
-  motd:
-    description: Set the server MOTD appendix
-    permission: smpt.motd
-
+  playerinfo:
+    description: View all information about a registered user
+    permission: smpt.playerinfo
+    permission-message: §cYou don't have permission to use this command.
+  trace:
+    description: Trace back the invite trail of a registered user
+    permission: smpt.trace
+    permission-message: §cYou don't have permission to use this command.
   invite:
     description: Enable a player to join the server
     permission: smpt.invite
     permission-message: §cOnly trusted players can use this command.
+
+  # Moderator commands
   suspend:
     description: Suspend a player from the server
     permission: smpt.suspend
@@ -30,14 +37,17 @@ commands:
     description: Entirely remove a registered player from the config
     permission: smpt.purge
     permission-message: §cOnly moderators can use this command.
-  playerinfo:
-    description: View all information about a registered user
-    permission: smpt.playerinfo
-    permission-message: §cOnly moderators can use this command.
 
+  # Admin commands
+  motd:
+    description: Set the server MOTD appendix
+    permission: smpt.motd
   reload:
     description: Reload main config
     permission: smpt.reload
   lock:
-    description: Toggle maintenance mode
+    description: Enable maintenance mode
+    permission: smpt.lock
+  unlock:
+    description: Disable maintenance mode
     permission: smpt.lock
