@@ -42,10 +42,16 @@ public class CmdTrace implements CommandExecutor {
             ));
         }
         // Root player
-        sender.sendMessage(String.format("§6>> §f%s §7registered on §f%s",
-                Bukkit.getOfflinePlayer(trace.getLast()).getName(),
-                TimeFormatter.toDate(InviteLog.getInviteTime(trace.getLast()))
-        ));
+        try {
+            sender.sendMessage(String.format("§6>> §f%s §7registered on §f%s",
+                    Bukkit.getOfflinePlayer(trace.getLast()).getName(),
+                    TimeFormatter.toDate(InviteLog.getInviteTime(trace.getLast()))
+            ));
+        } catch (Exception e) {
+            sender.sendMessage(String.format("§c>> §4%s §cis missing from the invite log! Unable to trace any further back.",
+                    Bukkit.getOfflinePlayer(trace.getLast()).getName()
+            ));
+        }
 
         sender.sendMessage(String.format("\nTo view the simplified info, use §b/playerinfo %s", player.getName()));
 
@@ -57,7 +63,7 @@ public class CmdTrace implements CommandExecutor {
 
         UUID current = playerID;
         int hops = 0;
-        while (current != null || hops > 20) {
+        while (current != null && hops < 20) {
             trace.add(current);
             current = InviteLog.getInviteID(current);
             hops++;
