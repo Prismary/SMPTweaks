@@ -23,7 +23,7 @@ public class CmdLock implements CommandExecutor {
 
         int count = 0;
         for (Player player : Bukkit.getOnlinePlayers()) {
-            if (!player.hasPermission("smpt.lockbypass")) {
+            if (!player.hasPermission("smpt.lockbypass") && !player.hasPermission("smpt.lock")) {
                 player.kick(Component.text("§cThe server has been temporarily closed for maintenance."));
                 count++;
             }

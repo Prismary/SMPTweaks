@@ -69,13 +69,14 @@ public final class SMPTweaks extends JavaPlugin {
     }
 
     private void registerCommands() {
+        getCommand("smpt").setExecutor(new CmdSMPT());
+        getCommand("help").setExecutor(new CmdHelp());
         getCommand("invite").setExecutor(new CmdInvite());
         getCommand("suspend").setExecutor(new CmdSuspend());
         getCommand("reinstate").setExecutor(new CmdReinstate());
         getCommand("purge").setExecutor(new CmdPurge());
         getCommand("lock").setExecutor(new CmdLock());
         getCommand("unlock").setExecutor(new CmdUnlock());
-        getCommand("reload").setExecutor(new CmdReload());
         getCommand("motd").setExecutor(new CmdMotd());
         getCommand("playerinfo").setExecutor(new CmdPlayerInfo());
         getCommand("trace").setExecutor(new CmdTrace());

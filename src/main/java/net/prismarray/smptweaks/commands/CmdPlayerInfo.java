@@ -14,6 +14,7 @@ public class CmdPlayerInfo implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+
         if (args.length == 0) {
             sender.sendMessage("§cPlease specify a username!");
             return true;
@@ -27,7 +28,7 @@ public class CmdPlayerInfo implements CommandExecutor {
             return true;
         }
 
-        sender.sendMessage(String.format("§6Known information about §e§l%s§6:", player.getName()));
+        sender.sendMessage(String.format("\n§6Known information about §e§l%s§6:", player.getName()));
         try {
             sender.sendMessage("§6>> §7Invited by: §f" + Bukkit.getOfflinePlayer(InviteLog.getInviteID(playerID)).getName());
         } catch (Exception e) {
@@ -45,6 +46,8 @@ public class CmdPlayerInfo implements CommandExecutor {
             }
             sender.sendMessage("§6>> §7Suspended on: §f" + TimeFormatter.toDate(InviteLog.getSuspendTime(playerID)));
         }
+
+        sender.sendMessage(String.format("\nTo view the complete invite trace, use §b/trace %s", player.getName()));
 
         return true;
     }

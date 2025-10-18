@@ -5,12 +5,23 @@ api-version: '1.21'
 prefix: SMPT
 authors: [ Prismary ]
 description: Lightweight, all-in-one plugin for Minecraft with friends
+website: github.com/Prismary/SMPTweaks
 
 commands:
+  smpt:
+    description: SMPT info command
+    permission: smpt.info
+    permission-message: §cYou don't have permission to use this command.
+
   # User commands
+  help:
+    description: Show user command usage
+    permission: smpt.help
+    permission-message: §cYou don't have permission to use this command.
   discord:
     description: Send player a discord link
     permission: smpt.discord
+    permission-message: §cYou don't have permission to use this command.
   playerinfo:
     description: View all information about a registered user
     permission: smpt.playerinfo
@@ -42,12 +53,53 @@ commands:
   motd:
     description: Set the server MOTD appendix
     permission: smpt.motd
-  reload:
-    description: Reload main config
-    permission: smpt.reload
   lock:
     description: Enable maintenance mode
     permission: smpt.lock
   unlock:
     description: Disable maintenance mode
     permission: smpt.lock
+
+permissions:
+  smpt.info:
+    description: View plugin info
+    default: true
+  smpt.help:
+    description: User help command
+    default: true
+  smpt.discord:
+    description: Discord command
+    default: true
+  smpt.playerinfo:
+    description: Player info command
+    default: op
+  smpt.trace:
+    description: Player invite trace command
+    default: op
+  smpt.invite:
+    description: Invite command (whitelist)
+    default: op
+  smpt.cooldownbypass:
+    description: Lets user bypass the new player invite cooldown
+    default: op
+  smpt.suspend:
+    description: Suspend command (ban)
+    default: op
+  smpt.reinstate:
+    description: Reinstate command (unban)
+    default: op
+  smpt.purge:
+    description: Purge command (entirely remove from invite log)
+    default: op
+  smpt.motd:
+    description: MOTD command (change server browser message)
+    default: op
+  smpt.lock:
+    description: Lock and unlock commands (maintenance mode)
+    default: op
+  smpt.lockbypass:
+    description: Lets user bypass maintenance mode lockout
+    default: op
+  smpt.reload:
+    description: Reload main config file command
+    default: op

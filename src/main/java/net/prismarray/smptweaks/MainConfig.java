@@ -126,8 +126,22 @@ public class MainConfig extends Config {
         getInstance().save();
     }
 
-    public static void setStaticMessage(String appendix) {
-        getInstance().getConfig().set("motd.message", appendix);
+    public static void setStaticMessage(String message) {
+        getInstance().getConfig().set("motd.message", message);
+        getInstance().save();
+    }
+
+    public static void addRandomMessage(String message) {
+        List<String> pool = getInstance().getConfig().getStringList("motd.pool");
+        if (!pool.contains(message)) { // avoid duplicates
+            pool.add(message);
+        }
+        getInstance().getConfig().set("motd.pool", pool);
+        getInstance().save();
+    }
+
+    public static void setMOTDRandomMode(boolean mode) {
+        getInstance().getConfig().set("motd.randomize", mode);
         getInstance().save();
     }
 }

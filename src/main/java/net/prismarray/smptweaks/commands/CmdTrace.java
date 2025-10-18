@@ -32,7 +32,7 @@ public class CmdTrace implements CommandExecutor {
 
         List<UUID> trace = getUUIDTrace(playerID);
 
-        sender.sendMessage(String.format("§6Invite trace of §e§l%s§6:", player.getName()));
+        sender.sendMessage(String.format("\n§6Invite trace of §e§l%s§6:", player.getName()));
         // Print invite trace minus root player
         for (int i = 0; i < trace.size()-1; i++) {
             sender.sendMessage(String.format("§6>> §f%s §7invited by §f%s §7on §f%s",
@@ -46,6 +46,8 @@ public class CmdTrace implements CommandExecutor {
                 Bukkit.getOfflinePlayer(trace.getLast()).getName(),
                 TimeFormatter.toDate(InviteLog.getInviteTime(trace.getLast()))
         ));
+
+        sender.sendMessage(String.format("\nTo view the simplified info, use §b/playerinfo %s", player.getName()));
 
         return true;
     }
