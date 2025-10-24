@@ -14,7 +14,7 @@ public class EvtPlayerLogin extends EventBase {
     public void playerLogin(PlayerLoginEvent event) {
         UUID playerID = event.getPlayer().getUniqueId();
 
-        if (MainConfig.isLocked() && !event.getPlayer().hasPermission("smpt.lock")) {
+        if (MainConfig.isLocked() && !event.getPlayer().hasPermission("smpt.lockbypass")) {
             disallow(event, "§cThe server is temporarily closed for maintenance.");
             return;
         }

@@ -21,7 +21,7 @@ motd:
   line1: "§c[?.?.?] §6Server Name"
   line2: "§8>> §7"
   message: "Static MOTD"
-  maintenance: "§c⚠ Temporarily closed for maintenance"
+  maintenance: "§4⚠ Temporarily closed for maintenance"
   pool:
     - "Random 1"
     - "Random 2"

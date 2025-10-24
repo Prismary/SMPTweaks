@@ -55,6 +55,8 @@ public class CmdSMPT implements CommandExecutor {
     public void cmdHelp(CommandSender sender) {
         sender.sendMessage("§6SMPT command overview:");
         sender.sendMessage("§7>> §e/smpt §7- §fShow info and help");
+        sender.sendMessage("§7>> §e/message, /msg §7- §fSend a player a private message");
+        sender.sendMessage("§7>> §e/reply, /r §7- §fReply to the last private message");
         sender.sendMessage("§7>> §e/discord §7- §fShow discord invite link");
         sender.sendMessage("§7>> §e/playerinfo §7- §fShow player related info from invite register");
         sender.sendMessage("§7>> §e/trace §7- §fView the invite trace that led to the invitation of a player");

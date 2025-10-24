@@ -33,7 +33,18 @@ commands:
   invite:
     description: Enable a player to join the server
     permission: smpt.invite
-    permission-message: §cOnly trusted players can use this command.
+    permission-message: You don't have permission to use this command.
+  message:
+    description: Send a private message
+    permission: smpt.msg
+    permission-message: §cYou don't have permission to use this command.
+    aliases: [msg]
+  reply:
+    description: Reply to the most recent private message you received
+    permission: smpt.msg
+    permission-message: §cYou don't have permission to use this command.
+    aliases: [r]
+
 
   # Moderator commands
   suspend:
@@ -69,6 +80,9 @@ permissions:
     default: true
   smpt.discord:
     description: Discord command
+    default: true
+  smpt.msg:
+    description: Private messaging
     default: true
   smpt.playerinfo:
     description: Player info command

@@ -80,6 +80,8 @@ public final class SMPTweaks extends JavaPlugin {
         getCommand("motd").setExecutor(new CmdMotd());
         getCommand("playerinfo").setExecutor(new CmdPlayerInfo());
         getCommand("trace").setExecutor(new CmdTrace());
+        getCommand("message").setExecutor(new CmdMessage());
+        getCommand("reply").setExecutor(new CmdReply());
 
         if (MainConfig.isDiscordEnabled()) {
             getCommand("discord").setExecutor(new CmdDiscord());
