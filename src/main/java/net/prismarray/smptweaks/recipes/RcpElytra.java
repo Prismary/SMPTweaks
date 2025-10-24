@@ -32,8 +32,8 @@ public class RcpElytra extends RecipeBase {
                 "EFE"
         );
 
-        recipe.setIngredient('A', Material.WITHER_ROSE);
-        recipe.setIngredient('B', Material.DRAGON_HEAD);
+        recipe.setIngredient('A', Material.END_ROD);
+        recipe.setIngredient('B', Material.TORCHFLOWER);
         recipe.setIngredient('C', Material.ECHO_SHARD);
         recipe.setIngredient('D', Material.CHAINMAIL_CHESTPLATE);
         recipe.setIngredient('E', Material.WIND_CHARGE);
