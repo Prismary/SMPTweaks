@@ -55,10 +55,12 @@ spawn:
 crafting:
   totemOfPreservation: true
   elytra: true
+  mending: true
 
 # Balancing tweaks
 balancing:
   noMendingTrades: true
+  noXPBottleTrades: true
   noElytraSpawns: true
   noElytraRepair: true
   noElytraEnchants: true

@@ -53,6 +53,10 @@ public class MainConfig extends Config {
         return getInstance().getConfig().getBoolean("balancing.noMendingTrades");
     }
 
+    public static boolean noXPBottleTrades() {
+        return getInstance().getConfig().getBoolean("balancing.noXPBottleTrades");
+    }
+
     public static boolean noElytraSpawns() {
         return getInstance().getConfig().getBoolean("balancing.noElytraSpawns");
     }
@@ -80,6 +84,10 @@ public class MainConfig extends Config {
 
     public static boolean isElytraCraftingEnabled() {
         return getInstance().getConfig().getBoolean("crafting.elytra");
+    }
+
+    public static boolean isMendingCraftingEnabled() {
+        return getInstance().getConfig().getBoolean("crafting.mending");
     }
 
     // Other getters

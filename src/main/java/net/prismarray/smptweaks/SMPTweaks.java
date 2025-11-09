@@ -3,6 +3,7 @@ package net.prismarray.smptweaks;
 import net.prismarray.smptweaks.commands.*;
 import net.prismarray.smptweaks.events.*;
 import net.prismarray.smptweaks.recipes.RcpElytra;
+import net.prismarray.smptweaks.recipes.RcpMending;
 import net.prismarray.smptweaks.recipes.RcpTotemOfPreservation;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -51,6 +52,10 @@ public final class SMPTweaks extends JavaPlugin {
             getServer().getPluginManager().registerEvents(new EvtMendingTrade(), this);
         }
 
+        if (MainConfig.noXPBottleTrades()) {
+            getServer().getPluginManager().registerEvents(new EvtXPBottleTrade(), this);
+        }
+
         if (MainConfig.noElytraSpawns()) {
             getServer().getPluginManager().registerEvents(new EvtPreventElytraSpawn(), this);
         }
@@ -94,6 +99,9 @@ public final class SMPTweaks extends JavaPlugin {
         }
         if (MainConfig.isElytraCraftingEnabled()) {
             new RcpElytra(this);
+        }
+        if (MainConfig.isMendingCraftingEnabled()) {
+            new RcpMending(this);
         }
     }
 }
