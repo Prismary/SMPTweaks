@@ -38,7 +38,7 @@ commands:
     description: Send a private message
     permission: smpt.msg
     permission-message: §cYou don't have permission to use this command.
-    aliases: [msg]
+    aliases: [msg, tell]
   reply:
     description: Reply to the most recent private message you received
     permission: smpt.msg
